@@ -1,5 +1,9 @@
 package _17_Inheritance;
 
+import _17_Inheritance.Message.FancyMessage;
+import _17_Inheritance.Message.Message;
+import _17_Inheritance.Message.SimpleMessage;
+
 public class Main {
     public static void main(String[] args) {
         //상속 - 기존 클래스(부모 클래스)의 속성과 기능(메소드)를
@@ -22,5 +26,15 @@ public class Main {
         Tiger tiger = new Tiger("호랭이", 6, true);
         tiger.move();
         tiger.hunt();
+
+        Message message = new Message("기본 메세지 입니다.");
+        message.print();
+
+        SimpleMessage simpleMessage = new SimpleMessage("심플 메시지 입니다.");
+        simpleMessage.print();
+
+        FancyMessage fancyMessage = new FancyMessage("팬시 메시지 입니다.");
+        fancyMessage.print();
     }
+
 }
