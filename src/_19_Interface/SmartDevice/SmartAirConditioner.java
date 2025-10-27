@@ -13,5 +13,47 @@ package _19_Interface.SmartDevice;
  * 고유 메소드로 온도 올리는거 하나 내리는거 하나
  * 근데 전원이 꺼져있으면 현재 전원이 꺼져있습니다 출력
 * */
-public class SmartAirConditioner {
+public class SmartAirConditioner implements SmartDevice {
+    private boolean turnedOn;
+    private int temperature = 24;
+
+    @Override
+    public String getName() {
+        return "스마트 에어컨";
+    }
+
+    @Override
+    public void turnOn() {
+        turnedOn = true;
+        System.out.println(getName() + "의 전원을 켭니다. 설정 온도: " + temperature + "℃");
+    }
+
+    @Override
+    public void turnOff() {
+        turnedOn = false;
+        System.out.println(getName() + "의 전원을 끕니다.");
+    }
+
+    @Override
+    public boolean isTurnedOn() {
+        return turnedOn;
+    }
+
+    public void increaseTemperature() {
+        if (!turnedOn) {
+            System.out.println("전원이 꺼져있습니다.");
+            return;
+        }
+        temperature++;
+        System.out.println("온도를 1도 올립니다. 현재 온도: " + temperature + "℃");
+    }
+
+    public void decreaseTemperature() {
+        if (!turnedOn) {
+            System.out.println("전원이 꺼져있습니다.");
+            return;
+        }
+        temperature--;
+        System.out.println("온도를 1도 내립니다. 현재 온도: " + temperature + "℃");
+    }
 }

@@ -7,4 +7,31 @@ package _19_Interface.SmartDevice;
 * showStatus() => 모든 가전의 상태 출력
 * */
 public class SmartHomeHub {
+    private SmartAirConditioner smartAirConditioner;
+    private SmartSpeaker smartSpeaker;
+    private SmartLight smartLight;
+
+    public SmartHomeHub(SmartAirConditioner smartAirConditioner, SmartSpeaker smartSpeaker, SmartLight smartLight) {
+        this.smartAirConditioner = smartAirConditioner;
+        this.smartSpeaker = smartSpeaker;
+        this.smartLight = smartLight;
+    }
+
+    public void turnOnAll() {
+        smartAirConditioner.turnOn();
+        smartSpeaker.turnOn();
+        smartLight.turnOn();
+    }
+
+    public void turnOffAll() {
+        smartAirConditioner.turnOff();
+        smartSpeaker.turnOff();
+        smartLight.turnOff();
+    }
+
+    public void showStatus() {
+        System.out.println("스마트 에어컨 : " + (smartAirConditioner.isTurnedOn() ? "ON" : "OFF"));
+        System.out.println("스마트 스피커 : " + (smartSpeaker.isTurnedOn() ? "ON" : "OFF"));
+        System.out.println("스마트 전등 : " + (smartLight.isTurnedOn() ? "ON" : "OFF"));
+    }
 }

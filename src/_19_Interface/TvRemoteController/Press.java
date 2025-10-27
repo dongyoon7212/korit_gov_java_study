@@ -1,4 +1,4 @@
-package _19_Interface;
+package _19_Interface.TvRemoteController;
 
 /*
 * 인터페이스는 기능(메소드)의 명세(규칙, 약속)만 정의하는 틀

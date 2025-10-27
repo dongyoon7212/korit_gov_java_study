@@ -1,4 +1,4 @@
-package _19_Interface;
+package _19_Interface.TvRemoteController;
 
 public class Main {
     public static void main(String[] args) {
