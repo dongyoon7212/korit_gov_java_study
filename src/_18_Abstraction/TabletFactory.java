@@ -13,6 +13,18 @@ package _18_Abstraction;
 * manage()호출
 * upgrade("아이패드 미니 7세대")호출
 * */
-public class TabletFactory {
+public class TabletFactory extends Factory {
+    @Override
+    public void produce(String model) {
+        System.out.println("[ " + model + " ] 모델 태블릿을 생산합니다.");
+    }
+
+    @Override
+    public void manage() {
+        System.out.println(getFactoryName() + "을 관리합니다.");
+    }
+
+    public void upgrade(String model) {
+        System.out.println(model + "로 업그레이드 합니다");
+    }
 }
-//상속 - 다형성(캐스팅) - 추상클래스 - 인터페이스 - 내부클래스 - 익명

@@ -32,5 +32,12 @@ public class Main {
         PhoneFactory phoneFactory2 = new PhoneFactory();
         phoneFactory2.setFactoryName("삼성 공장");
         phoneFactory2.produce("갤럭시S 25");
+
+        TabletFactory tabletFactory = new TabletFactory();
+        tabletFactory.setFactoryName("애플 태블릿 공장");
+        tabletFactory.produce("아이패드 미니 6세대");
+        tabletFactory.manage();
+        tabletFactory.upgrade("아이패드 미니 7세대");
+
     }
 }
