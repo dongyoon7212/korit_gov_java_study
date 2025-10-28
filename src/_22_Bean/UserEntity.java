@@ -1,5 +1,6 @@
 package _22_Bean;
 
+
 import java.time.LocalDateTime;
 
 /*
