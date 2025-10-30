@@ -1,5 +1,6 @@
 package _25_LayeredArchitecture.view;
 
+import _25_LayeredArchitecture.dto.SigninReqDto;
 import _25_LayeredArchitecture.dto.SignupReqDto;
 import _25_LayeredArchitecture.entity.User;
 import _25_LayeredArchitecture.service.UserService;
@@ -40,10 +41,12 @@ public class TodoListView {
                 }
             } else if ("2".equals(cmd) && principal == null) {
                 //회원가입
+                signupView();
             } else if ("2".equals(cmd) && principal != null) {
                 //로그아웃
             } else if ("3".equals(cmd) && principal == null) {
                 //로그인
+                signinView();
             } else {
                 System.out.println("메뉴를 다시 선택해주세요.");
             }
@@ -73,6 +76,26 @@ public class TodoListView {
 
         SignupReqDto signupReqDto = new SignupReqDto(username, password, name);
         //userService의 회원가입 로직에 signupReqDto 전달
+        userService.signup(signupReqDto);
+        System.out.println("====== 회원가입 완료 ======");
+        //조회할 수 있는 로직
+        userService.printAllUserList();
+    }
+
+    public void signinView() {
+        System.out.println("[ 로그인 ]");
+        System.out.print("username >> ");
+        String username = scanner.nextLine();
+        System.out.print("password >> ");
+        String password = scanner.nextLine();
+        SigninReqDto signinReqDto = new SigninReqDto(username, password);
+        User foundUser = userService.signin(signinReqDto);
+        if (foundUser == null) {
+            System.out.println("사용자 정보를 다시 확인해주세요.");
+            return;
+        }
+        principal = foundUser;
+        System.out.println("====== 로그인 성공 ======");
     }
 }
 
