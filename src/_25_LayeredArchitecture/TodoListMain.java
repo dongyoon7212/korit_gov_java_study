@@ -8,7 +8,7 @@ public class TodoListMain {
     public static void main(String[] args) {
         UserList userList = new UserList();
         UserService userService = new UserService(userList);
-        TodoListView todoListView = new TodoListView(userService);
-        todoListView.homeView();
+        TodoListView view = new TodoListView(userService);
+        view.homeView();
     }
 }

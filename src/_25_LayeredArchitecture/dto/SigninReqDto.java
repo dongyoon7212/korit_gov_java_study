@@ -9,8 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SignupDto {
+public class SigninReqDto {
     private String username;
     private String password;
-    private String name;
 }
