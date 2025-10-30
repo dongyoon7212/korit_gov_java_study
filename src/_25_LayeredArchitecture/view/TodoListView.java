@@ -44,6 +44,8 @@ public class TodoListView {
                 signupView();
             } else if ("2".equals(cmd) && principal != null) {
                 //로그아웃
+                principal = null;
+                System.out.println("====== 로그아웃 완료 ======");
             } else if ("3".equals(cmd) && principal == null) {
                 //로그인
                 signinView();
@@ -96,6 +98,27 @@ public class TodoListView {
         }
         principal = foundUser;
         System.out.println("====== 로그인 성공 ======");
+    }
+
+    public void todoListMenuView() {
+        while (true) {
+            System.out.println("[ TodoList Menu ]");
+            System.out.println("1. Todo 등록");
+            System.out.println("2. Todo 조회");
+            System.out.println("b. 뒤로가기");
+            System.out.print(">>> ");
+            String cmd = scanner.nextLine();
+
+            if ("b".equals(cmd)) {
+                break;
+            } else if ("1".equals(cmd)) {
+                System.out.println("[ Todo 등록 ]");
+            //LocalDateTime.now()
+            } else if ("2".equals(cmd)) {
+                System.out.println("[ Todo 조회 ]");
+
+            }
+        }
     }
 }
 
