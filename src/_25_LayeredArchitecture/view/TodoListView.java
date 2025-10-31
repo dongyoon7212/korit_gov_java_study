@@ -2,7 +2,9 @@ package _25_LayeredArchitecture.view;
 
 import _25_LayeredArchitecture.dto.SigninReqDto;
 import _25_LayeredArchitecture.dto.SignupReqDto;
+import _25_LayeredArchitecture.dto.TodoRegisterReqDto;
 import _25_LayeredArchitecture.entity.User;
+import _25_LayeredArchitecture.service.TodoService;
 import _25_LayeredArchitecture.service.UserService;
 
 import java.util.Scanner;
@@ -11,10 +13,12 @@ public class TodoListView {
     private Scanner scanner;
     private User principal;
     private UserService userService;
+    private TodoService todoService;
 
-    public TodoListView(UserService userService) {
+    public TodoListView(UserService userService, TodoService todoService) {
         scanner = new Scanner(System.in);
         this.userService = userService;
+        this.todoService = todoService;
     }
 
     public void homeView() {
@@ -113,7 +117,12 @@ public class TodoListView {
                 break;
             } else if ("1".equals(cmd)) {
                 System.out.println("[ Todo 등록 ]");
-            //LocalDateTime.now()
+                System.out.print("오늘 할 일 >> ");
+                String contents = scanner.nextLine();
+                TodoRegisterReqDto todoRegisterReqDto = new TodoRegisterReqDto(contents, principal);
+                //투두 등록
+                todoService.register(todoRegisterReqDto);
+                System.out.println("====== 등록완료 ======");
             } else if ("2".equals(cmd)) {
                 System.out.println("[ Todo 조회 ]");
 
