@@ -22,5 +22,22 @@ public class TodoList {
         todos = temp;
     }
 
+    public Todo[] findAllByUserId(int userId) {
+        int foundTodoCount = 0;
+        for (Todo todo : todos) {
+            if (todo.getUser().getUserId() == userId) {
+                foundTodoCount++;
+            }
+        }
+        Todo[] foundTodos = new Todo[foundTodoCount];
+        for (int i = 0, j = 0; i < todos.length; i++) {
+            if (todos[i].getUser().getUserId() == userId) {
+                foundTodos[j] = todos[i];
+                j++;
+            }
+        }
+        return foundTodos;
+    }
+
 
 }

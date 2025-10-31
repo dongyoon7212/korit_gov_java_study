@@ -2,6 +2,7 @@ package _25_LayeredArchitecture.service;
 
 import _25_LayeredArchitecture.dto.TodoRegisterReqDto;
 import _25_LayeredArchitecture.entity.Todo;
+import _25_LayeredArchitecture.entity.User;
 import _25_LayeredArchitecture.repository.TodoList;
 
 public class TodoService {
@@ -19,5 +20,12 @@ public class TodoService {
         todo.setTodoId(todoList.generatedTodoId());
         //3. todoList에 추가
         todoList.add(todo);
+    }
+
+    public void printAllTodoByUser(User user) {
+        Todo[] foundTodos = todoList.findAllByUserId(user.getUserId());
+        for (Todo todo : foundTodos) {
+            System.out.println(todo);
+        }
     }
 }

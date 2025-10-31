@@ -43,6 +43,7 @@ public class TodoListView {
                     System.out.println("로그인 후 사용 가능합니다.");
                     continue;
                 }
+                todoListMenuView();
             } else if ("2".equals(cmd) && principal == null) {
                 //회원가입
                 signupView();
@@ -119,13 +120,13 @@ public class TodoListView {
                 System.out.println("[ Todo 등록 ]");
                 System.out.print("오늘 할 일 >> ");
                 String contents = scanner.nextLine();
-                TodoRegisterReqDto todoRegisterReqDto = new TodoRegisterReqDto(contents, principal);
-                //투두 등록
+                TodoRegisterReqDto todoRegisterReqDto =
+                        new TodoRegisterReqDto(contents, principal);
                 todoService.register(todoRegisterReqDto);
                 System.out.println("====== 등록완료 ======");
             } else if ("2".equals(cmd)) {
                 System.out.println("[ Todo 조회 ]");
-
+                todoService.printAllTodoByUser(principal);
             }
         }
     }
