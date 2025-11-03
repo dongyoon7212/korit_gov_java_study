@@ -46,7 +46,7 @@ public class Json01 {
         address.addProperty("zipCode", 12345);
 
         jsonObject1.add("address", address);
-        .
+
         String json2 = gson1.toJson(jsonObject1);
         System.out.println(json2);
     }
