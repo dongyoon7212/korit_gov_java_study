@@ -1,6 +1,9 @@
 package _32_LayeredArchitecture2;
 
+import _32_LayeredArchitecture2.dto.SigninReqDto;
 import _32_LayeredArchitecture2.dto.SignupReqDto;
+import _32_LayeredArchitecture2.service.SigninService;
+import _32_LayeredArchitecture2.service.SigninServiceImpl;
 import _32_LayeredArchitecture2.service.SignupService;
 
 import java.util.Scanner;
@@ -8,6 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         SignupService signupService = SignupService.getInstance();
+        SigninService signinService = SigninServiceImpl.getInstance();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("[회원관리 시스템]");
@@ -57,6 +61,26 @@ public class Main {
 
             } else if ("2".equals(selectedMenu)) {
                 System.out.println("[ 로그인 ]");
+                //SigninReqDto객체 생성 후 로그인 정보 각각 입력받음 (단 isEmpty로 확인)
+                SigninReqDto signinReqDto = new SigninReqDto();
+                while (true) {
+                    System.out.print("Username: ");
+                    signinReqDto.setUsername(scanner.nextLine());
+                    if (!signinService.isEmpty(signinReqDto.getUsername())) {
+                        break;
+                    }
+                    System.out.println("다시 입력하세요.");
+                }
+                while (true) {
+                    System.out.print("Password: ");
+                    signinReqDto.setPassword(scanner.nextLine());
+                    if (!signinService.isEmpty(signinReqDto.getPassword())) {
+                        break;
+                    }
+                    System.out.println("다시 입력하세요.");
+                }
+                //유효성 검사 완료 후 signin() 호출
+                signinService.signin(signinReqDto);
             } else if ("3".equals(selectedMenu)) {
                 System.out.println("[ 가입된 회원 전체 조회 ]");
             } else {
