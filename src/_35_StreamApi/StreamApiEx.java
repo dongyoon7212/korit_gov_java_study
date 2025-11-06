@@ -15,6 +15,7 @@ import java.util.List;
 //"삼성 노트북 갤럭시북4 프로",
 //"엘지 울트라기어 게이밍 모니터" 제품들 넣기
 //2. 브랜드 키워드 입력받기 => stream filter이용해서 키워드 브랜드 뽑아내고 List에 담기
+// => 삼성 애플 엘지 => 영어로 입력해도 되도록 apple, Apple
 //3. 뽑아온 브랜드 상품들 출력 없으면 없다고 출력
 public class StreamApiEx {
     public static void main(String[] args) {
@@ -30,5 +31,6 @@ public class StreamApiEx {
                 "삼성 노트북 갤럭시북4 프로",
                 "엘지 울트라기어 게이밍 모니터"
         );
+
     }
 }
